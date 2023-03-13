@@ -28,10 +28,27 @@ define([
             if (!this.options.buttonEnabled)
                 return;
 
+
             Extend.buttons.render(this.element.get(0), {
                 referenceId: this.options.productSku
             });
+
+           // START CustomCartCss Override Cart Offering
+            if (
+                    (window.valuesConfigCustomOfferCssCaptionEnabled == 1 && window.valuesConfigCustomOfferCssCaptionValue !== '')
+                    || (window.valuesConfigCustomOfferCssCaptionLogoEnabled == 1 && window.valuesConfigCustomOfferCssCaptionLogoValue !== '')
+                    || (window.valuesConfigCustomOfferCssCaptionInfoButtonEnabled == 1 && window.valuesConfigCustomOfferCssCaptionInfoButtonValue !== '')
+                    || (window.valuesConfigCustomOfferCssSimpleOfferButtonEnabled == 1 && window.valuesConfigCustomOfferCssSimpleOfferButtonValue !== '')
+                ) {
+                    this.getCssFormat('product');
+            }
+                // END CustomCartCss Override Cart Offer
+
+
+
+
         },
+
 
         /**
          * Renders warranty simple offer button
@@ -70,7 +87,7 @@ define([
             });
 
             // START CustomCartCss Override Cart Offering
-            if (
+        /*    if (
                     (window.valuesConfigCustomOfferCssCaptionEnabled == 1 && window.valuesConfigCustomOfferCssCaptionValue !== '')
                     || (window.valuesConfigCustomOfferCssCaptionLogoEnabled == 1 && window.valuesConfigCustomOfferCssCaptionLogoValue !== '')
                     || (window.valuesConfigCustomOfferCssCaptionInfoButtonEnabled == 1 && window.valuesConfigCustomOfferCssCaptionInfoButtonValue !== '')
@@ -79,6 +96,7 @@ define([
                     this.getCssFormat();
             }
                 // END CustomCartCss Override Cart Offer
+ */
         },
 
         /**
@@ -149,10 +167,9 @@ define([
             return inputs;
         },
 
-        getCssFormat: function (){
-
-             if(document.querySelector("iframe")) {
-                let iFrameDocument = document.querySelector("iframe").contentDocument;
+        getCssFormat: function (offerType){
+	if(document.querySelector('.extend-'+offerType+'-offer iframe')) {
+                let iFrameDocument = document.querySelector('.extend-'+offerType+'-offer iframe').contentDocument;
                 if (
                     (window.valuesConfigCustomOfferCssCaptionEnabled == 1 && window.valuesConfigCustomOfferCssCaptionValue !== '')
                     || (window.valuesConfigCustomOfferCssCaptionLogoEnabled == 1 && window.valuesConfigCustomOfferCssCaptionLogoValue !== '')
@@ -180,9 +197,15 @@ define([
                         }
                         customCSS = customCaptionCSS + "\n" + customCaptionLogoCSS + "\n" + customCaptionInfoButtonCSS + "\n" + customSimpleOfferButtonCSS + "\n"  + customCartCSS;
                         iFrameDocument.head.innerHTML = iFrameDocument.head.innerHTML + '<style>'+customCSS+'</style>';
+			document.querySelector('.product-warranty-offers').visibility='visible';
                    }
-                }else {
-                    window.setTimeout(this.getCssFormat, 500);
+
+
+	}else {
+        	       	document.querySelector('.product-warranty-offers').visibility='hidden';
+			const callback = this;
+			window.setTimeout(function (){callback.getCssFormat(offerType)} , 200);
+
                 }
         }
     }); //JM

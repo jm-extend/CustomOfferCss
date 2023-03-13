@@ -152,7 +152,7 @@ define([
         if (this.options.buttonEnabled) {
                     warrantyBlock.extendWarrantyOffers('renderOffersButton');
                    /* CSS offer Override */
-                    warrantyBlock.extendWarrantyOffers('getCssFormat');
+                    warrantyBlock.extendWarrantyOffers('getCssFormat', 'simple');
             }
         },
 
