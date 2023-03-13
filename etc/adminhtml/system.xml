@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Extend Warranty
+ *
+ * @author      Extend Magento Team <magento@etend.com>
+ * @category    Extend
+ * @package     Warranty
+ * @copyright   Copyright (c) 2021 Extend Inc. (https://www.extend.com/)
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="extend" translate="label comment" sortOrder="10">
+            <label>Extend</label>
+        </tab>
+        <section id="warranty" translate="label comment" sortOrder="10" showInDefault="1" showInWebsite="1"
+                 showInStore="1" canRestore="1">
+            <tab>extend</tab>
+            <label>Extend Protection Plans</label>
+            <resource>Extend_Warranty::warranty</resource>
+            <group id="customizations" translate="label comment" sortOrder="90" showInDefault="1" showInWebsite="1"
+                   showInStore="1" canRestore="0">
+                <label>Custom Offer CSS</label>
+                <comment>You can choose to customize the CSS for the PDP, the cart and minicart offers. Make sure to clear Magento's cache after updating this field. &#xA; (Example of valid CSS: font-size: 1.2rem !important;) </comment>
+                <depends>
+                    <field id="warranty/enableExtend/enable">1</field>
+                </depends>
+
+                <field id="custom_offer_css_caption_enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Override CSS for offer caption</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="custom_offer_css_caption_value" translate="label comment" type="text" showInDefault="1"
+                       showInWebsite="1" showInStore="1" sortOrder="10">
+                    <label>CSS value for cart offer label </label>
+                    <comment>Text affected : "Add accident protection offered by";</comment>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+
+                <field id="custom_offer_css_caption_logo_enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Override CSS for offer caption Logo</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="custom_offer_css_caption_logo_value" translate="label comment" type="text" showInDefault="1"
+                       showInWebsite="1" showInStore="1" sortOrder="10">
+                    <label>CSS value for cart offer caption logo </label>
+                    <comment>Element affected : "Extend logo";</comment>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+
+                <field id="custom_offer_css_caption_info_button_enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Override CSS for offer Info Button</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="custom_offer_css_caption_info_button_value" translate="label comment" type="text" showInDefault="1"
+                       showInWebsite="1" showInStore="1" sortOrder="10">
+                    <label>CSS value for cart offer caption info button </label>
+                    <comment>Text affected : "What's covered?";</comment>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+
+                <field id="custom_offer_css_simple_offer_button_enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Override CSS for Simple offer Button</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="custom_offer_css_simple_offer_button_value" translate="label comment" type="text" showInDefault="1"
+                       showInWebsite="1" showInStore="1" sortOrder="10">
+                    <label>CSS value for Simple offer button </label>
+                    <comment>Element affected : "button.button.simple-offer" (cart / mini cart);</comment>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+
+            </group>
+        </section>
+    </system>
+</config>

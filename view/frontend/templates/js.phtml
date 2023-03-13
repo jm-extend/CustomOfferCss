@@ -1,0 +1,21 @@
+<?php
+/**
+ * @var Js $block
+ */
+
+use Extend\CustomOfferCss\Block\Js;
+use Extend\CustomOfferCss\ViewModel\CustomOfferCss;
+
+/** @var CustomOfferCss $viewModel */
+$viewModel = $block->getData('viewModel');
+?>
+<script>
+    window.valuesConfigCustomOfferCssCaptionEnabled = '<?php echo $viewModel->isCustomOfferCssCaptionEnabled(); ?>';
+    window.valuesConfigCustomOfferCssCaptionValue = '<?php echo $viewModel->getCustomOfferCssCaptionValue(); ?>';
+    window.valuesConfigCustomOfferCssCaptionLogoEnabled = '<?php echo $viewModel->isCustomOfferCssCaptionLogoEnabled(); ?>';
+    window.valuesConfigCustomOfferCssCaptionLogoValue = '<?php echo $viewModel->getCustomOfferCssCaptionLogoValue(); ?>';
+    window.valuesConfigCustomOfferCssCaptionInfoButtonEnabled = '<?php echo $viewModel->isCustomOfferCssCaptionInfoButtonEnabled(); ?>';
+    window.valuesConfigCustomOfferCssCaptionInfoButtonValue = '<?php echo $viewModel->getCustomOfferCssCaptionInfoButtonValue(); ?>';
+    window.valuesConfigCustomOfferCssSimpleOfferButtonEnabled = '<?php echo $viewModel->isCustomOfferCssSimpleOfferButtonEnabled(); ?>';
+    window.valuesConfigCustomOfferCssSimpleOfferButtonValue = '<?php echo $viewModel->getCustomOfferCssSimpleOfferButtonValue(); ?>';
+</script>
